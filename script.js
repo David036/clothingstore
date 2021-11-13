@@ -1,4 +1,5 @@
 let womanSection = document.querySelector('.woman')
+
 let woman1 = {
     image: "./Images/2016-Spring-new-thin-coat-jacket-Women-coat-Blazer-the-spot-Black-Blue-spring-coat-female.webp",
     name: " Women's JIL SANDER + Navy Pure New Wool Peak Lapel Casual Blazer Jacket Size 38",
@@ -24,8 +25,40 @@ let woman4 = {
     btn: 'Add to Cart',
 }
 let womens = [woman1,woman2,woman3,woman4]
-
-
+let cartWomanSrc = ''
+let l = 0
+for (let i = 0; i < womens.length; i++) {
+    let womanBlock = document.createElement('div')
+    womanSection.append(womanBlock)
+    womanBlock.classList.add('woman-block')
+    let womanBlockImg = document.createElement('img')
+    womanBlock.append(womanBlockImg)
+    womanBlockImg.classList.add('woman-img')
+    womanBlockImg.setAttribute('src',`${womens[i].image}`)
+    let womanBlockTitle = document.createElement('h3')
+    womanBlock.append(womanBlockTitle)
+    womanBlockTitle.classList.add('woman-title')
+    womanBlockTitle.innerHTML = womens[i].name
+    let womanBlockPrice = document.createElement('p')
+    womanBlock.append(womanBlockPrice)
+    womanBlockPrice.innerHTML =  ` $ ${womens[i].price} `
+    womanBlockPrice.classList.add('woman-title')
+    let womanBlockBtn = document.createElement('button')
+    womanBlock.append(womanBlockBtn)
+    womanBlockBtn.classList.add('btn')
+    womanBlockBtn.innerHTML = womens[i].btn
+    womanBlockBtn.addEventListener('click',()=> {
+        bigModal.style.display = 'flex'
+        cartWomanSrc = womens[i].image
+        
+        bigModal.addEventListener('click',(ev) => {
+            ev.stopImmediatePropagation()
+            if (ev.target == bigModal && ev.target != smallModal) {
+                bigModal.style.display = 'none'
+            }    
+        })
+    })
+}
 let bigCartBlock = document.createElement('div')
 document.body.append(bigCartBlock)
 bigCartBlock.classList.add('big-cart-block')
@@ -70,52 +103,41 @@ let bigModal = document.createElement('div')
                let cart = document.querySelector('.cart')
                cart.style.display = 'flex'
                let cartPrice = document.querySelector('.cart-price')
-                // cartPrice.innerHTML += `$${womens[i].price}`
-                cartPrice.innerHTML = '1'
+            
+            l++
+            cartPrice.innerHTML = l
+            let cartWomanBlock = document.createElement('div')
+            cartWomanBlock.classList.add('cart-woman-block')
+            cartBlock.append(cartWomanBlock)
+                let cartWoman = document.createElement('img')
+                cartWoman.classList.add('cart-woman')
+                cartWomanBlock.append(cartWoman)
+                cartWoman.setAttribute('src',`${cartWomanSrc}`)
+                let cartWomanRemove = document.createElement('button')
+                cartWomanRemove.classList.add('btn')
+                cartWomanRemove.innerHTML = 'Remove'
+                cartWomanBlock.append(cartWomanRemove)
+                cartWomanRemove.addEventListener('click',()=> {
+                    cartWomanBlock.remove()
+                    
+                    l--
+                    cartPrice.innerHTML = l
+                })
+
                 cart.addEventListener('click',()=> {
                    bigCartBlock.style.display = 'block'  
+
+
                    bigCartBlock.addEventListener('click',(ev) => {
                     ev.stopImmediatePropagation()
                     if (ev.target == bigCartBlock && ev.target != cartBlock) {
                         bigCartBlock.style.display = 'none'
                     }    
                 })
-                   
+                  
+                
                 })
             })
         }
 
-for (let i = 0; i < womens.length; i++) {
-    let womanBlock = document.createElement('div')
-    womanSection.append(womanBlock)
-    womanBlock.classList.add('woman-block')
-    let womanBlockImg = document.createElement('img')
-    womanBlock.append(womanBlockImg)
-    womanBlockImg.classList.add('woman-img')
-    womanBlockImg.setAttribute('src',`${womens[i].image}`)
-    let womanBlockTitle = document.createElement('h3')
-    womanBlock.append(womanBlockTitle)
-    womanBlockTitle.classList.add('woman-title')
-    womanBlockTitle.innerHTML = womens[i].name
-    let womanBlockPrice = document.createElement('p')
-    womanBlock.append(womanBlockPrice)
-    womanBlockPrice.innerHTML =  ` $ ${womens[i].price} `
-    womanBlockPrice.classList.add('woman-title')
-    let womanBlockBtn = document.createElement('button')
-    womanBlock.append(womanBlockBtn)
-    womanBlockBtn.classList.add('btn')
-    womanBlockBtn.innerHTML = womens[i].btn
-    womanBlockBtn.addEventListener('click',()=> {
-        bigModal.style.display = 'flex'
-        
-        
-        
-        bigModal.addEventListener('click',(ev) => {
-            ev.stopImmediatePropagation()
-            if (ev.target == bigModal && ev.target != smallModal) {
-                bigModal.style.display = 'none'
-            }    
-        })
-    })
-}
 

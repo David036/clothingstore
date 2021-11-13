@@ -148,10 +148,13 @@ main {
 }
 .cart-block {
     width: 100%;
-    height: 50%;
+    height: 70%;
     position: fixed;
     top: 0px;
     background-color: rgba(0, 0, 0, 0.719);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
 }
 .big-cart-block {
     width: 100%;
@@ -159,4 +162,14 @@ main {
     position:absolute;
     top: 0px;
     display: none;
+    
+}
+.cart-woman {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+}
+.cart-woman-block {
+    max-width: 100px;
+    width: 100%;
 }
