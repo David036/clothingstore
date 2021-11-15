@@ -124,14 +124,13 @@ let bigModal = document.createElement('div')
                     cartPrice.innerHTML = l
                 })
 
-                cart.addEventListener('click',()=> {
-                   bigCartBlock.style.display = 'block'  
-
+                cart.addEventListener('click',()=> {  
+                    bigCartBlock.style.transform = 'translateY(0)'
 
                    bigCartBlock.addEventListener('click',(ev) => {
                     ev.stopImmediatePropagation()
                     if (ev.target == bigCartBlock && ev.target != cartBlock) {
-                        bigCartBlock.style.display = 'none'
+                        bigCartBlock.style.transform = 'translateY(-100%)'
                     }    
                 })
                   

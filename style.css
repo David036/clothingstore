@@ -185,7 +185,7 @@ main .woman {
 
 .cart-block {
   width: 100%;
-  height: 70%;
+  height: 50%;
   position: fixed;
   top: 0px;
   background-color: rgba(0, 0, 0, 0.719);
@@ -200,9 +200,12 @@ main .woman {
 .big-cart-block {
   width: 100%;
   height: 100%;
-  position: absolute;
   top: 0px;
-  display: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .cart-woman {
